@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2021 at 11:53 AM
+-- Generation Time: Oct 24, 2021 at 04:22 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `email_system`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emails`
+--
+
+CREATE TABLE `emails` (
+  `id` int(255) NOT NULL,
+  `fromUser` varchar(255) NOT NULL,
+  `toUser` varchar(255) NOT NULL,
+  `cc` varchar(255) DEFAULT NULL,
+  `bcc` varchar(255) DEFAULT NULL,
+  `subject` varchar(255) NOT NULL,
+  `body` varchar(255) NOT NULL,
+  `mailBy` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `emails`
+--
+
+INSERT INTO `emails` (`id`, `fromUser`, `toUser`, `cc`, `bcc`, `subject`, `body`, `mailBy`) VALUES
+(8, 'hassaan.sagheer5@gmail.com', 'ismailamjad98@yahoo.com', NULL, NULL, 'Sixth Test Subject', 'Sixth Test Body', 29),
+(9, 'hassaan.sagheer5@gmail.com', 'ismailamjad98@yahoo.com', NULL, NULL, 'Seventh Test Subject', 'seventh Test Body', 29),
+(10, 'hassaan.sagheer5@gmail.com', 'ismailamjad98@yahoo.com', 'yaseenboss49@gmail.com', 'yaseenboss@gmail.com', 'Seventh Test Subject', 'seventh Test Body', 29);
 
 -- --------------------------------------------------------
 
@@ -63,7 +89,8 @@ CREATE TABLE `secondary_users` (
 
 INSERT INTO `secondary_users` (`id`, `name`, `email`, `password`, `merchant_id`) VALUES
 (11, 'user', 'user@gmail.com', '$2y$10$I4DO1zSeEtT5EV3khdoXvuZqzRDd.U2rVNdrGkja63SuBmxsZT7UW', 29),
-(12, 'Ismail', 'ismail@gmail.com', '$2y$10$S.9lnj8li16dJa2xg5zXT.Zg6DYIZGSDHqgTAkL5.V./dqZbohKzO', 29);
+(12, 'Ismail', 'ismail@gmail.com', '$2y$10$S.9lnj8li16dJa2xg5zXT.Zg6DYIZGSDHqgTAkL5.V./dqZbohKzO', 29),
+(13, 'user', 'user@gmail.com', '$2y$10$qTSvBS21lklyljlJYKHDQeHyVRCg7WHCPyQoVJu0g7S.CpU5wHqW6', 29);
 
 -- --------------------------------------------------------
 
@@ -91,12 +118,19 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `image`, `remain
 (5, 'Ahmad', 'ahmad@gmail.com', '$2y$10$1k/7q2FQ5TcSH7GAX2aHROdhRVyULS3g/JoNuKnQH18BIzpyVP3CO', '', '', '', 0),
 (6, 'mudasir', 'musdasir@gmail.com', '$2y$10$mauzpHPNoyTP6k.lCGh8fe7JBHgBzZJn/jXND.N9/8Dg4BoC4smxq', '', '', '', 0),
 (8, 'Zubair', 'zubair@gmail.com', '123', '', '', '', 0),
-(29, 'Hassaan', 'hassaan.sagheer5@gmail.com', '$2y$10$FOO6Z8kScOMXIuQj.9FJTe3AbPqmtRDeevSfB7wSwzgxeEFDze5xO', 'Merchant', '1635017168675.jpg', '20', 1),
-(30, 'Yaseen', 'yaseenboss48@gmail.com', '$2y$10$tQCU2o7R0xeqGBD9qHtD4uZmrJA37CkBjg0WvfLugqnwEX1iSUS5y', 'Merchant', '1635017487281.jpg', '20', 1);
+(29, 'Hassaan', 'hassaan.sagheer5@gmail.com', 'hassaanpp12', 'Merchant', '1635017168675.jpg', '20', 1),
+(30, 'Yaseen', 'yaseenboss48@gmail.com', '$2y$10$tQCU2o7R0xeqGBD9qHtD4uZmrJA37CkBjg0WvfLugqnwEX1iSUS5y', 'Merchant', '1635017487281.jpg', '20', 1),
+(31, 'admin', 'hassaan@gmail.com', 'hassaanpp12', 'Admin', '', '', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `emails`
+--
+ALTER TABLE `emails`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `packages`
@@ -121,6 +155,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `emails`
+--
+ALTER TABLE `emails`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
@@ -130,13 +170,13 @@ ALTER TABLE `packages`
 -- AUTO_INCREMENT for table `secondary_users`
 --
 ALTER TABLE `secondary_users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
